@@ -1,0 +1,32 @@
+{
+  "name": "vite-ts-vue-starter",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
+  },
+  "dependencies": {
+    "ant-design-vue": "2.2.1",
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.10",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.0.9",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.13.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.0",
+    "vue-tsc": "^0.0.24"
+  }
+}
