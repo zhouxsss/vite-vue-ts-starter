@@ -2,22 +2,23 @@
  * @Author: zhouxs
  * @Date: 2021-07-07 17:53:51
  * @LastEditors: zhouxs
- * @LastEditTime: 2021-07-09 19:00:10
+ * @LastEditTime: 2021-07-12 19:31:31
  * @Description: file content
 -->
 <template>
   <h1>{{ msg }}</h1>
 
-  <button type="button" @click="count++">count++</button>
+  <Button type="button" @click="count++">count++</Button>
   count is: {{ count }}
 
-  <button type="button" @click="inCrement">inCrement store</button>
+  <Button type="button" @click="inCrement">inCrement store</Button>
   store count is: {{ computedCount }}
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { Button } from 'ant-design-vue'
 import { key } from '../store'
 export default defineComponent({
   name: 'HelloWorld',
