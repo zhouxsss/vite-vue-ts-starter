@@ -11,7 +11,9 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "lib": ["dom", "esnext"],
     "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     // 忽略 this 的类型检查, Raise error on this expressions with an implied any type.
@@ -23,6 +25,6 @@
       "/#/*": ["types/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts",  "src/**/*.vue", "types/**/*.d.ts", "types/**/*.ts", "vite.config.ts"],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }

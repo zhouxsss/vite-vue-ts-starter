@@ -13,13 +13,13 @@
 
   <Button type="button" @click="inCrement">inCrement store</Button>
   store count is: {{ computedCount }}
+
+  <p>{{$t('layout.header.home')}}</p>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
-import { Button } from 'ant-design-vue'
-import { key } from '../store'
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -29,7 +29,7 @@ export default defineComponent({
     }
   },
   setup: () => {
-    const store = useStore(key)
+    const store = useStore()
     const count = ref(0)
     const computedCount = computed(() => store.state.count)
     return {

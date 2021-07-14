@@ -6,8 +6,9 @@
  * @Description: file content
  */
 import { createApp } from 'vue'
-import { store, key } from './store'
+import { store } from './store'
 import router from './router'
+import { i18n } from './locales/setupI18n'
 import App from './App.vue'
 import { registerGlobComp } from '/@/components/registerGlobComp';
 
@@ -15,9 +16,9 @@ import { registerGlobComp } from '/@/components/registerGlobComp';
 
 const app = createApp(App)
 
-app.use(store, key)
+app.use(store)
 app.use(router)
-
-registerGlobComp(app);
+app.use(i18n)
+registerGlobComp(app)
 
 app.mount('#app')
