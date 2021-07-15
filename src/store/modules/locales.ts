@@ -7,7 +7,7 @@ const ls = createStorage()
 
 const lsLocaleSetting = (ls.get(LOCALE_KEY) || localeSetting) as LocaleSetting
 
-interface LocaleState {
+export interface LocaleState {
   localInfo: LocaleSetting;
 }
 

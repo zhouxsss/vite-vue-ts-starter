@@ -20,6 +20,7 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { key } from '/@/store'
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -29,7 +30,7 @@ export default defineComponent({
     }
   },
   setup: () => {
-    const store = useStore()
+    const store = useStore(key)
     const count = ref(0)
     const computedCount = computed(() => store.state.count)
     return {

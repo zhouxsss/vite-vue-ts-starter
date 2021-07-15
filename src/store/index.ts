@@ -1,9 +1,14 @@
-// import { InjectionKey } from 'vue'
+import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
-import locales from './modules/locales'
-import count from './modules/count'
+import locales, { LocaleState } from './modules/locales'
+import count, { CountState } from './modules/count'
 
-// export const key: InjectionKey<Store<State>> = Symbol()
+export type State = {
+  locales?: LocaleState
+  count?: CountState
+}
+
+export const key: InjectionKey<Store<State>> = Symbol('key')
 
 export const store = createStore({
   modules: {
@@ -11,3 +16,7 @@ export const store = createStore({
     count
   }
 })
+
+export default function setupStore(app) {
+  app.use(store, key)
+}
