@@ -1,11 +1,3 @@
-<!--
- * @Author: zhouxs
- * @Date: 2021-07-07 17:53:51
- * @LastEditors: zhouxs
- * @LastEditTime: 2021-07-09 19:16:18
- * @Description: file content
--->
-
 # Vue 3 + Typescript + Vite
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
@@ -24,6 +16,7 @@ ant-design-vue
 
 vue-i18n
 axios
+tailwindcss
 
 ### 工程化
 

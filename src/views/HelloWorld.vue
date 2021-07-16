@@ -26,7 +26,8 @@ export default defineComponent({
   props: {
     msg: {
       type: String,
-      required: true
+      required: true,
+      default: '111'
     }
   },
   setup: () => {

@@ -1,16 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent, onMounted } from 'vue'
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    onMounted(() => {
+      // todo： 需要添加移动端限制
+      const htmlDom = document.querySelector('html') as HTMLElement
+      htmlDom.style.fontSize = '4.26vw'
+    })
+    return {}
   }
 })
 </script>

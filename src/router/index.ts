@@ -6,7 +6,7 @@
  * @Description: file content
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
+import HelloWorld from "../views/HelloWorld.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -21,7 +21,16 @@ const routes: Array<RouteRecordRaw> = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import(/* webpackChunkName: "About" */ "../components/About.vue")
+            import(/* webpackChunkName: "About" */ "../views/About.vue")
+    },
+    {
+        path: "/tailwind",
+        name: "Tailwind",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import(/* webpackChunkName: "About" */ "../views/Tailwind.vue")
     }
 ];
 
