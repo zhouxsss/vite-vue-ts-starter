@@ -18,9 +18,9 @@ export function useEventListener({
   name,
   listener,
   options,
-  autoRemove = true
+  autoRemove = true,
 }: UseEventParams): { removeEvent: RemoveEventFn } {
-  let remove: RemoveEventFn = () => { }
+  let remove: RemoveEventFn = () => {}
   const isAddRef = ref(false)
 
   if (el) {
@@ -35,10 +35,10 @@ export function useEventListener({
       element,
       (v, _ov, cleanUp) => {
         if (v) {
-          !unref(isAddRef) && addEventListener(v);
+          !unref(isAddRef) && addEventListener(v)
           cleanUp(() => {
-            autoRemove && removeEventListener(v);
-          });
+            autoRemove && removeEventListener(v)
+          })
         }
       },
       { immediate: true }
@@ -50,6 +50,6 @@ export function useEventListener({
     }
   }
   return {
-    removeEvent: remove
+    removeEvent: remove,
   }
 }
