@@ -13,8 +13,8 @@ export const key: InjectionKey<Store<State>> = Symbol('key')
 export const store = createStore({
   modules: {
     locales,
-    count
-  }
+    count,
+  },
 })
 
 export default function setupStore(app) {

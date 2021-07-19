@@ -1,19 +1,19 @@
 import { isNullOrUnDef } from './is'
 
 export interface CreateStorageParams {
-  prefixKey: string,
-  storage: Storage,
+  prefixKey: string
+  storage: Storage
   timeout?: Nullable<number>
 }
 
 export const createStorage = ({
   prefixKey = '',
   storage = sessionStorage,
-  timeout = null
+  timeout = null,
 }: Partial<CreateStorageParams> = {}) => {
   const WebStorage = class WebStorage {
-    private storage: Storage;
-    private prefixKey?: string;
+    private storage: Storage
+    private prefixKey?: string
 
     constructor() {
       this.storage = storage
@@ -28,13 +28,13 @@ export const createStorage = ({
      * @param {string} key
      * @param {*} value
      * @param {number} expire
-     * 
-     * */  
-    set(key: string, value: any, expire: number | null = timeout){
+     *
+     * */
+    set(key: string, value: any, expire: number | null = timeout) {
       const stringData = JSON.stringify({
         value,
         time: Date.now(),
-        expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null
+        expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null,
       })
 
       this.storage.setItem(this.getKey(key), stringData)
@@ -45,7 +45,7 @@ export const createStorage = ({
      */
     get(key: string, def: any = null): any {
       const val = this.storage.getItem(this.getKey(key))
-      if(!val) return def
+      if (!val) return def
 
       try {
         const data = JSON.parse(val)
@@ -54,7 +54,7 @@ export const createStorage = ({
           return value
         }
         this.remove(key)
-      } catch(e) {
+      } catch (e) {
         return def
       }
     }
@@ -64,17 +64,17 @@ export const createStorage = ({
      * @param {string} key
      * @memberof Cache
      */
-     remove(key: string) {
-      this.storage.removeItem(this.getKey(key));
+    remove(key: string) {
+      this.storage.removeItem(this.getKey(key))
     }
 
     /**
      * Delete all caches of this instance
      */
     clear(): void {
-      this.storage.clear();
+      this.storage.clear()
     }
   }
 
-  return new WebStorage();
+  return new WebStorage()
 }

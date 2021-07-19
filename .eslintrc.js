@@ -1,10 +1,3 @@
-/*
- * @Author: zhouxs
- * @Date: 2021-07-08 18:00:03
- * @LastEditors: zhouxs
- * @LastEditTime: 2021-07-08 18:05:08
- * @Description: file content
- */
 const { defineConfig } = require('eslint-define-config')
 
 module.exports = defineConfig({
@@ -27,8 +20,7 @@ module.exports = defineConfig({
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'plugin:prettier/recommended',
-    'plugin:jest/recommended',
+    'plugin:prettier/recommended'
   ],
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'off',

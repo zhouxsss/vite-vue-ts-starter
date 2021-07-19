@@ -6,7 +6,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint:eslint": "eslint --cache --max-warnings 0 --fix",
-    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,ts,css,less,scss,vue,html,md}\""
   },
   "dependencies": {
     "ant-design-vue": "^2.2.2",
@@ -40,15 +40,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint:eslint && lint:prettier"
     }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint --fix"
-    ],
-    "src/**/*.{scss,css}": [
-      "prettier --write"
-    ]
   }
 }

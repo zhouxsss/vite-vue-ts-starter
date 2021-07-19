@@ -11,5 +11,5 @@ export function isNull(val: unknown): val is null {
 }
 
 export function isNullOrUnDef(val: unknown): val is null | undefined {
-  return isUnDef(val) || isNull(val);
+  return isUnDef(val) || isNull(val)
 }

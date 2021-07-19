@@ -10,4 +10,4 @@ export default {
   },
   momentLocale,
   momentLocaleName: 'zh-cn',
-};
+}

@@ -9,7 +9,7 @@ export const localeSetting: LocaleSetting = {
   showPicker: true,
   locale: LOCALE.ZH_CN,
   fallback: LOCALE.ZH_CN,
-  availableLocales: [LOCALE.ZH_CN, LOCALE.EN_US]
+  availableLocales: [LOCALE.ZH_CN, LOCALE.EN_US],
 }
 
 export const localeList = [

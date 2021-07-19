@@ -1,6 +1,6 @@
-import type { LocaleSetting, LocaleType } from '/#/config';
+import type { LocaleSetting, LocaleType } from '/#/config'
 import { LOCALE_KEY } from '/@/constants/cacheKeys'
-import { localeSetting } from '/@/constants/localeSetting';
+import { localeSetting } from '/@/constants/localeSetting'
 import { createStorage } from '/@/utils/storageCache'
 
 const ls = createStorage()
@@ -8,19 +8,19 @@ const ls = createStorage()
 const lsLocaleSetting = (ls.get(LOCALE_KEY) || localeSetting) as LocaleSetting
 
 export interface LocaleState {
-  localInfo: LocaleSetting;
+  localInfo: LocaleSetting
 }
 
 const locales = {
   state: (): LocaleState => ({
-    localInfo: lsLocaleSetting
+    localInfo: lsLocaleSetting,
   }),
   getters: {
     getShowPicker(state): boolean {
-      return !!state.localInfo?.showPicker;
+      return !!state.localInfo?.showPicker
     },
     getLocale(state): LocaleType {
-      return state.localInfo?.locale ?? 'zh_CN';
+      return state.localInfo?.locale ?? 'zh_CN'
     },
   },
   mutations: {
@@ -31,12 +31,11 @@ const locales = {
     initLocale(state) {
       state.setLocaleInfo({
         ...localeSetting,
-        ...state.localeInfo
+        ...state.localeInfo,
       })
-    }
+    },
   },
   actions: {},
 }
 
 export default locales
-
