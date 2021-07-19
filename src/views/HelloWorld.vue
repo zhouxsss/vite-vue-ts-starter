@@ -1,19 +1,21 @@
 <template>
   <h1>{{ msg }}</h1>
 
-  <Button type="button" @click="count++">count++</Button>
+  <a-button type="button" @click="count++">count++</a-button>
   count is: {{ count }}
 
-  <Button type="button" @click="inCrement">inCrement store</Button>
+  <a-button type="button" @click="inCrement">inCrement store</a-button>
   store count is: {{ computedCount }}
 
   <p>{{ $t('layout.header.home') }}</p>
+  <p>{{ isMobile ? 'isMobile' : 'not isMobile' }}</p>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { key } from '/@/store'
+import { useAppProviderContext } from '/@/hooks/context/useAppContext'
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -27,10 +29,12 @@ export default defineComponent({
     const store = useStore(key)
     const count = ref(0)
     const computedCount = computed(() => store.state.count)
+    const isMobile = useAppProviderContext()
     return {
       count,
       computedCount,
       inCrement: () => store.commit('increment'),
+      isMobile: isMobile,
     }
   },
 })

@@ -1,11 +1,4 @@
-import {
-  InjectionKey,
-  provide,
-  inject,
-  reactive,
-  readonly as defineReadonly,
-  UnwrapRef,
-} from 'vue'
+import { InjectionKey, provide, inject, reactive, readonly as defineReadonly, UnwrapRef } from 'vue'
 
 export interface CreateContextOptions {
   readonly?: boolean
@@ -33,12 +26,12 @@ export function createContext<T>(
   }
 }
 
-export function useContext<T>(key: InjectionKey<T>, native?: boolean): T;
-export function useContext<T>(key: InjectionKey<T>, defaultValue?: any, native?: boolean): T;
+export function useContext<T>(key: InjectionKey<T>, native?: boolean): T
+export function useContext<T>(key: InjectionKey<T>, defaultValue?: any, native?: boolean): T
 
 export function useContext<T>(
   key: InjectionKey<T> = Symbol(),
   defaultValue?: any
 ): ShallowUnwrap<T> {
-  return inject(key, defaultValue || {});
+  return inject(key, defaultValue || {})
 }
