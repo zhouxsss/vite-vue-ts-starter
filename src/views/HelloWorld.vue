@@ -1,10 +1,3 @@
-<!--
- * @Author: zhouxs
- * @Date: 2021-07-07 17:53:51
- * @LastEditors: zhouxs
- * @LastEditTime: 2021-07-12 19:31:31
- * @Description: file content
--->
 <template>
   <h1>{{ msg }}</h1>
 
@@ -14,7 +7,7 @@
   <Button type="button" @click="inCrement">inCrement store</Button>
   store count is: {{ computedCount }}
 
-  <p>{{$t('layout.header.home')}}</p>
+  <p>{{ $t('layout.header.home') }}</p>
 </template>
 
 <script lang="ts">
@@ -27,8 +20,8 @@ export default defineComponent({
     msg: {
       type: String,
       required: true,
-      default: '111'
-    }
+      default: '111',
+    },
   },
   setup: () => {
     const store = useStore(key)
@@ -37,9 +30,9 @@ export default defineComponent({
     return {
       count,
       computedCount,
-      inCrement: () => store.commit('increment')
+      inCrement: () => store.commit('increment'),
     }
-  }
+  },
 })
 </script>
 

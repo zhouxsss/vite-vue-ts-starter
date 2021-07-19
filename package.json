@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:eslint": "eslint --cache --max-warnings 0 --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "eslint-define-config": "^1.0.9",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.13.0",
+    "husky": "^7.0.1",
     "less": "^4.1.1",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
@@ -36,5 +37,18 @@
     "vite": "^2.4.0",
     "vite-plugin-style-import": "^1.0.1",
     "vue-tsc": "^0.0.24"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{scss,css}": [
+      "prettier --write"
+    ]
   }
 }
