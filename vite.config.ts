@@ -8,7 +8,7 @@ import { getThemeVariables } from 'ant-design-vue/dist/theme'
 import { createProxy } from './build/vite/proxy'
 import { OUTPUT_DIR } from './build/constants'
 
-export default ({ mode }: ConfigEnv) : UserConfig  => {
+export default ({ mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
   const { VITE_PUBLIC_PATH, VITE_PORT, VITE_PROXY, VITE_DROP_CONSOLE } = env
@@ -49,7 +49,10 @@ export default ({ mode }: ConfigEnv) : UserConfig  => {
     css: {
       preprocessorOptions: {
         less: {
-          modifyVars: getThemeVariables({ dark: false }),
+          modifyVars: {
+            ...getThemeVariables({ dark: false }),
+            hack: `true; @import (reference) "${resolve('src/design/var.less')}";`,
+          },
           javascriptEnabled: true
         }
       }
@@ -82,5 +85,5 @@ function pathResolve(dir: string) {
 }
 
 function genBoolean(val: string | undefined) {
-  return val === 'true' ? true : val ==='false' ? false : undefined
+  return val === 'true' ? true : val === 'false' ? false : undefined
 }
