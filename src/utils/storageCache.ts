@@ -1,3 +1,4 @@
+import type { Nullable } from '/#/global'
 import { isNullOrUnDef } from './is'
 
 export interface CreateStorageParams {

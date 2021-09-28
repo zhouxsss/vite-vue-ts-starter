@@ -1,5 +1,5 @@
 export default {
-  header: {
+  menu: {
     home: '首页',
   },
 }

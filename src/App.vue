@@ -1,5 +1,5 @@
 <template>
-  <ConfigProvider :locale="getLocale">
+  <ConfigProvider :locale="{ locale }">
     <AppProvider>
       <router-view />
     </AppProvider>
@@ -11,12 +11,13 @@ import { defineComponent, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import { ConfigProvider } from 'ant-design-vue'
 import AppProvider from '/@/components/AppProvider.vue'
+import { storeKey } from '/@/store'
 
 export default defineComponent({
   name: 'App',
   components: { ConfigProvider, AppProvider },
   setup() {
-    const store = useStore()
+    const store = useStore(storeKey)
     onMounted(() => {})
     return {
       locale: computed(() => store.getters.getLocale),
@@ -24,14 +25,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -1,6 +1,7 @@
 import { ref, computed, ComputedRef, unref } from 'vue'
 import { useEventListener } from '/@/hooks/useEventListener'
 import { screenMap, sizeEnum, screenEnum } from '/@/constants/breakpointEnum'
+import useDebounceFn from './useDebounceFn'
 
 let globalScreenRef: ComputedRef<sizeEnum | undefined>
 let globalWidthRef: ComputedRef<number>
@@ -56,16 +57,15 @@ export function createBreakpointListen(fn?: (opt: CreateCallbackParams) => void)
     el: window,
     name: 'resize',
 
-    listener: () => {
+    listener: useDebounceFn(() => {
       getWindowWidth()
       resizeFn()
-    },
-    // wait: 100,
+    }, 500),
   })
 
   getWindowWidth()
   globalScreenRef = computed(() => unref(screenRef))
-  globalWidthRef = computed((): number => screenMap.get(unref(screenRef)!)!)
+  globalWidthRef = computed((): number => screenMap.get(screenRef.value!)!)
   globalRealWidthRef = computed((): number => unref(realWidthRef))
 
   function resizeFn() {

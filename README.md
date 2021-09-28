@@ -1,8 +1,6 @@
-# Vue 3 + Typescript + Vite
+# artBingo
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
-
-## 其他配置
+## 配置
 
 ### Vue 全家桶
 
@@ -14,15 +12,39 @@ ant-design-vue
 
 ### 其他工具
 
-vue-i18n
-axios
-tailwindcss
+vue-i18n axios tailwindcss
 
-### 工程化
+### 构建工具
 
-eslint
+vite + eslint + prettier
 
-参考：
+## 目录结构
 
-* <https://github.com/biaochenxuying/blog-vue-typescript>
-* <https://github.com/anncwb/vue-vben-admin>
+```
+├── build 打包配置文件
+├── dist 打包后生成文件
+├── public
+├── src
+│   ├── App.vue
+│   ├── apis 接口定义
+│   ├── assets 图片资源
+│   ├── components 组件
+│   │   ├── AppProvider.vue 嵌套组件
+│   │   ├── ArtBingo 业务组件
+│   │   ├── Layout 布局
+│   │   └── registerGlobComp.ts 注册公共组件
+│   ├── constants 变量
+│   ├── design 样式
+│   ├── hooks hooks
+│   ├── locales 语言
+│   │   ├── imgs 图片
+│   │   ├── lang 文字
+│   ├── main.ts 入口文件
+│   ├── router 路由
+│   ├── store 状态
+│   ├── utils 工具
+│   ├── views 页面
+├── tailwind.config.js tailwind配置文件
+├── types 类型声明
+├── vite.config.ts vite配置文件
+```

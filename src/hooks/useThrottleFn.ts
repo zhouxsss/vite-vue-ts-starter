@@ -1,15 +1,20 @@
-type Fn = () => void
+type Fn = (...any) => void
 
-export default function useThrottleFn(fn: Fn, duration: number = 80): Fn {
+export default function useThrottleFn(fn: Fn, duration: number = 80, immediate = false): Fn {
   let valid: boolean = true
   return function () {
+    const context = this
+    const args = arguments
     if (!valid) {
-      return false
+      return
     }
     valid = false
+    if (immediate) {
+      fn.apply(context, [...args])
+    }
     setTimeout(() => {
-      fn()
       valid = true
+      if (!immediate) fn.apply(context, [...args])
     }, duration)
   }
 }

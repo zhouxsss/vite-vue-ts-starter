@@ -3,24 +3,21 @@ import { LOCALE_KEY } from '/@/constants/cacheKeys'
 import { localeSetting } from '/@/constants/localeSetting'
 import { createStorage } from '/@/utils/storageCache'
 
-const ls = createStorage()
+const ls = createStorage({ storage: window.localStorage })
 
 const lsLocaleSetting = (ls.get(LOCALE_KEY) || localeSetting) as LocaleSetting
 
 export interface LocaleState {
-  localInfo: LocaleSetting
+  localeInfo: LocaleSetting
 }
 
 const locales = {
   state: (): LocaleState => ({
-    localInfo: lsLocaleSetting,
+    localeInfo: lsLocaleSetting,
   }),
   getters: {
-    getShowPicker(state): boolean {
-      return !!state.localInfo?.showPicker
-    },
     getLocale(state): LocaleType {
-      return state.localInfo?.locale ?? 'zh_CN'
+      return state.localeInfo?.locale || localeSetting.locale
     },
   },
   mutations: {

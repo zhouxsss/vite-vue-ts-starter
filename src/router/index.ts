@@ -1,40 +1,48 @@
-/*
- * @Author: zhouxs
- * @Date: 2021-07-08 18:16:41
- * @LastEditors: zhouxs
- * @LastEditTime: 2021-07-09 19:11:08
- * @Description: file content
- */
+import type { App } from 'vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HelloWorld from '../views/HelloWorld.vue'
+import { setupRouterGuard } from './guard'
+import Layout from '/@/components/Layout/index.vue'
+import paths from '../constants/paths'
 
-const routes: Array<RouteRecordRaw> = [
+type RouteConfig = RouteRecordRaw & { hidden?: boolean }
+
+const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "About" */ '../views/About.vue'),
-  },
-  {
-    path: '/tailwind',
-    name: 'Tailwind',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "About" */ '../views/Tailwind.vue'),
+    name: 'Layout',
+    component: Layout,
+    children: [
+      {
+        path: paths.home,
+        name: 'Home',
+        component: () => import(/* webpackChunkName: "home" */ '/@/views/Home/index.vue'),
+      },
+      {
+        path: paths.user,
+        name: 'User',
+        component: () => import(/* webpackChunkName: "lottery" */ '/@/views/User/index.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
   },
 ]
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory('/'),
   routes,
+  // scrollBehavior: (to) => (to.meta.keepAlive ? {} : { left: 0, top: 0 }),
+  // scrollBehavior (to, from, savedPosition) {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve({ left: 0, top: 0 })
+  //     }, 2000)
+  //   })
+  // }
 })
 
-export default router
+export default function setupRouter(app: App<Element>) {
+  app.use(router)
+  setupRouterGuard(router)
+}

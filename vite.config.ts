@@ -3,7 +3,6 @@ import { loadEnv } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
-import { getThemeVariables } from 'ant-design-vue/dist/theme'
 
 import { createProxy } from './build/vite/proxy'
 import { OUTPUT_DIR } from './build/constants'
@@ -50,7 +49,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       preprocessorOptions: {
         less: {
           modifyVars: {
-            ...getThemeVariables({ dark: false }),
             hack: `true; @import (reference) "${resolve('src/design/var.less')}";`,
           },
           javascriptEnabled: true

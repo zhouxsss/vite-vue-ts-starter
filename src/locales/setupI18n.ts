@@ -4,7 +4,7 @@ import type { I18n, I18nOptions } from 'vue-i18n'
 import { createI18n } from 'vue-i18n'
 import { setHtmlPageLang, setLoadLocalePool } from './helper'
 import { localeSetting } from '/@/constants/localeSetting'
-import { store } from '../store'
+import { store } from '/@/store'
 
 export let i18n: ReturnType<typeof createI18n>
 

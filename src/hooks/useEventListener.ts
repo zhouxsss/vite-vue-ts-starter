@@ -29,6 +29,7 @@ export function useEventListener({
       isAddRef.value = true
       e.removeEventListener(name, listener, options)
     }
+
     const addEventListener = (e: Element) => e.addEventListener(name, listener, options)
 
     const removeWatch = watch(

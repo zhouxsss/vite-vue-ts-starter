@@ -1,18 +1,18 @@
 <template>
-  <img alt="Vue logo" src="../assets/logo.png" />
-  <h1>{{ msg }}</h1>
+  <div class="home bg-white">
+    home
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'About',
-  data() {
-    return {
-      msg: 'about page',
-    }
+  name: 'home',
+  components: {
   },
   setup() {},
 })
 </script>
+
+<style lang="less"></style>

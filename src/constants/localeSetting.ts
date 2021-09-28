@@ -6,19 +6,7 @@ export const LOCALE: { [key: string]: LocaleType } = {
 }
 
 export const localeSetting: LocaleSetting = {
-  showPicker: true,
-  locale: LOCALE.ZH_CN,
+  locale: LOCALE.EN_US,
   fallback: LOCALE.ZH_CN,
   availableLocales: [LOCALE.ZH_CN, LOCALE.EN_US],
 }
-
-export const localeList = [
-  {
-    text: '简体中文',
-    event: LOCALE.ZH_CN,
-  },
-  {
-    text: 'English',
-    event: LOCALE.EN_US,
-  },
-]
